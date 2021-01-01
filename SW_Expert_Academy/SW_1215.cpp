@@ -7,6 +7,12 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV1
 
 using namespace std;
 
+int checkpal(){
+
+}
+
+int 
+
 int main(){
     return 0;
 }
