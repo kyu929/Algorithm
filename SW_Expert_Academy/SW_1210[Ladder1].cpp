@@ -23,12 +23,12 @@ int main() {
 
 	for (int t = 1; t <= TestCase; t++) {
 		cin >> TestNum;
-		for (int col = 0; col < 100; col++) {
-			for (int row = 0; row < 100; row++) {
-				cin >> arr[col][row];
+		for (int row = 0; row < 100; row++) {
+			for (int col = 0; col < 100; col++) {
+				cin >> arr[row][col];
 
 				//find endpoint
-				if (arr[col][row] == 2) {
+				if (arr[row][col] == 2) {
 					me.col = col;
 					me.row = row;
 				}
@@ -36,18 +36,18 @@ int main() {
 		}
 
 		for (int i = 99; i >= 1; i--) {
-			if (arr[i][me.row + 1] == 1) {
+			if (arr[i][me.col + 1] == 1) {
 				while (1) {
-					me.row++;
-					if (arr[i][me.row+1] != 1) {
+					me.col++;
+					if (arr[i][me.col+1] != 1) {
 						break;
 					}
 				}
 			}
-			else if (arr[i][me.row - 1] == 1) {
+			else if (arr[i][me.col - 1] == 1) {
 				while (1) {
-					me.row--;
-					if (arr[i][me.row-1] != 1) {
+					me.col--;
+					if (arr[i][me.col-1] != 1) {
 						break;
 					}
 				}
