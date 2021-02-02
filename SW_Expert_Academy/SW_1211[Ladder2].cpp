@@ -26,39 +26,7 @@ int main(){
 			}
 		}
 		
-		for(int i = 1; i <= 100; i++){
-			count = 0;
-			if(arr[1][i] == 1){
-				col_count = i;
-				for(int i = 1; i <= 100; i++){
-					count++;
-					if(arr[i][col_count+1] == 1){
-						while(1){
-							count++;
-							col_count++;
-							if(arr[i][col_count] != 1){
-								break;
-							}
-						}
-					}
-					else if(arr[i][col_count-1] == 1){
-						while(1){
-							count++;
-							col_count--;
-							if(arr[i][col_count] != 1){
-								break;
-							}
-						}
-					}
-				}
-
-			}
-			if(min > count){
-				min = count;
-				res = i;
-			}
-		}
-		cout << res <<endl;
+		
 	}
 	
 	return 0;
