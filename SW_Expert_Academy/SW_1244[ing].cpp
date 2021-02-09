@@ -8,32 +8,51 @@ https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV1
 
 using namespace std;
 
-void change(string s, int num) {
+string a;
+int ret, n, T;
+void go(int here, int _n) {
+    if (_n == 0) {
+        ret = max(ret, atoi(a.c_str()));
+        return;
+    }
+    for (int i = here; i < a.size(); i++) {
+        for (int j = i + 1; j < a.size(); j++) {
+            if (a[i] < a[j]) {
+                swap(a[i], a[j]);
+                go(i, _n - 1);
+                swap(a[i], a[j]);
+            }
+        }
+    }
+    if (_n % 2 == 0) ret = max(ret, atoi(a.c_str()));
+    else {
+        for (int i = 0; i < a.size(); i++) {
+            for (int j = i + 1; j < a.size(); j++) {
+                swap(a[i], a[j]);
+                ret = max(ret, atoi(a.c_str()));
+                swap(a[i], a[j]);
+            }
+        }
+    }
 
-	int s_size = s.size();
-	int max = 0;
-
-	for (int i = 0; i < num; i++) {
-		for (int j = 0; j < s_size; j++) {
-			if (s[j] > max) {
-
-			}
-		}
-	}
+    return;
 }
-
 int main() {
-
-	int TestCase;
-	string s;
-	int NOE;
-
-	cin >> TestCase;
-
-	for (int i = 1; i < TestCase + 1; i++) {
-		cin >> s >> NOE;
-
-
-	}
-
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    cin >> T;
+    for (int t = 1; t <= T; t++) {
+        cin >> a >> n;
+        ret = 0;
+        go(0, n);
+        cout << "#" << t << " " << ret << "\n";
+    }
+    return 0;
 }
+
+/*
+처음엔 선택정렬처럼 정렬을 주어진 횟수만큼 하는 줄 알았으나
+
+32888과 같은 반례가 있어 완전 탐색으로 다 탐색을 해봐야한다는 것을 알게 되었다.
+*/
